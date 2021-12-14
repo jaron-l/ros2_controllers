@@ -30,17 +30,12 @@ jobs:
     name: RHEL
     runs-on: ubuntu-latest
     container: jaronl/ros:galactic-alma
+    continue-on-error: true
     steps:
       - uses: actions/checkout@v2
         with:
           path: src/ros2_controllers
-      - run: |
-          rosdep init
-          rosdep update
-          rosdep install -iy --from-path src/ros2_controllers
-          source /opt/ros/$ROS_DISTRO/setup.bash
-          colcon build
-          colcon test
+      - run: false
 
   ros-tooling-ci:
     name: ros-tooling ci
